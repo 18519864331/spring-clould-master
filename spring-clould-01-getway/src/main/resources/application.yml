@@ -1,0 +1,29 @@
+server:
+  servlet:
+    context-path: /
+  port: 5000
+ 
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://eureka1:8001/eureka/,http://eureka2:8002/eureka/
+
+spring:
+  application:
+    name: zuul-servive
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true  ##启用重试机制
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds : 20000  #20秒
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie,Authorization
+  routes:
+    api-feign:  #随便起，相当于map的k
+      path: /feign-servive/** #feign-servives随便起，意思是访问以feign-servive开头的路径，就调下面的服务
+      service-id: feign-servive
+    api-prodiver:
+      path: /prodiver-servive/**
+      service-id: prodiver-servive

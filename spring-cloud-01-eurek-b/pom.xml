@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>spring-cloud-master</groupId>
+    <artifactId>spring-cloud-master</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>spring-cloud-01-eurek-b</groupId>
+  <artifactId>spring-cloud-01-eurek-b</artifactId>
+  <name>spring-cloud-01-eurek-b</name>
+  <description>spring-cloud-01-eurek-b</description>
+
+  <dependencies>
+	<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+	</dependency>
+  </dependencies>
+<!--SpringCloud  -->
+	<dependencyManagement>
+		<dependencies>
+		<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-dependencies</artifactId>
+		<version>Finchley.SR2</version>
+		<type>pom</type>
+		<scope>import</scope>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<!--  -->
+	<build>
+		<finalName>spring-cloud-01-eurek-b</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <configuration>
+	             	<!-- 主函数入口 -->
+	             	<mainClass>zxs.springcloud.EurekaApplication</mainClass>
+	            </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

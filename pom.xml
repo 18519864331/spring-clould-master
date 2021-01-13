@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>spring-cloud-master</groupId>
+  <artifactId>spring-cloud-master</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <name>spring-cloud-master</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+		<!-- 指定一下 j d k的版本  -->
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-collections.version>3.2.2</commons-collections.version>
+		<fastjson.version>1.1.26</fastjson.version>
+		<fasterxml.uuid.version>3.1.4</fasterxml.uuid.version>
+		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+</properties>
+	
+  <!-- SpringBoot父依赖 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+	</parent>
+
+	<!--SpringCloud  -->
+	<!-- <dependencyManagement>
+		<dependencies>
+		<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-dependencies</artifactId>
+		<version>Finchley.SR2</version>
+		<type>pom</type>
+		<scope>import</scope>
+		</dependency>
+		</dependencies>
+	</dependencyManagement> -->
+  
+
+
+
+  <dependencies>
+  	<!-- spring-boot-starter-web: MVC,AOP的依赖包.... -->
+		<!-- 上传下载依赖 -->
+		<dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>${commons-fileupload.version}</version>
+	    </dependency>
+		<dependency>
+	        <groupId>commons-io</groupId>
+	        <artifactId>commons-io</artifactId>
+	        <version>${commons-io.version}</version>
+	    </dependency>
+	    <!-- 工具集合 -->
+	    <dependency>
+	    	<groupId>commons-collections</groupId>
+	        <artifactId>commons-collections</artifactId>
+	        <version>${commons-collections.version}</version>
+	    </dependency>
+	    <!-- 编码解码 -->
+	    <dependency>
+	    	<groupId>commons-codec</groupId>
+	        <artifactId>commons-codec</artifactId>
+	    </dependency>
+	   
+	    <!-- 序列化json -->
+		<dependency>
+	    	<groupId>com.alibaba</groupId>
+	        <artifactId>fastjson</artifactId>
+	        <version>${fastjson.version}</version>
+	    </dependency>
+	    <!-- spring默认对json格式的支持依赖 -->
+	    <dependency>
+	    	<groupId>org.codehaus.jackson</groupId>
+	        <artifactId>jackson-mapper-asl</artifactId>
+	        <version>${org.codehaus.jackson.version}</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-databind</artifactId>
+	    </dependency>
+	    <!-- uuid -->
+	    <dependency>
+	    	<groupId>com.fasterxml.uuid</groupId>
+	        <artifactId>java-uuid-generator</artifactId>
+	        <version>${fasterxml.uuid.version}</version>
+	    </dependency>
+
+		
+    <!-- <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency> -->
+    <!-- 测试依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+ 		<!-- 使单元测试不影响项目编译 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<configuration>
+				<!-- 跳过测试 -->
+				<skip>true</skip>
+				<include>**/*Test*.java</include>
+				<!-- 打包时忽略单元测试类的错误 -->
+				<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+		</plugin>
+  	</plugins>
+  </build>
+  <!-- <build>
+  	<plugins>
+	  	<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			 <configuration>
+          		fork :  如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart
+                <fork>true</fork>
+            </configuration>
+		</plugin>
+  	</plugins>
+  </build> -->
+  <modules>
+  	<module>spring-cloud-01-eurek-a</module>
+  	<module>spring-cloud-01-prodiver</module>
+  	<module>spring-cloud-01-consumer</module>
+  	<module>spring-cloud-01-eurek-b</module>
+  	<module>spring-cloud-01-ribbon-client-1</module>
+  	<module>spring-cloud-01-ribbon-client-2</module>
+  	<module>spring-cloud-01-feign-request</module>
+  	<module>spring-clould-01-getway</module>
+  </modules>
+</project>

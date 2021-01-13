@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: eureka-server
+  profiles: ##application{}.yml
+    active: dev
+
+logging: 
+  level: 
+    root: warn

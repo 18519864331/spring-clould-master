@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: prodiver-servive
+  http: 
+    encoding: 
+      charset: UTF-8
+  servlet:   #配置上传文件信息
+    multipart:
+      enabled: true
+      file-size-threshold: 10
+      max-file-size: 50MB
+      max-request-size: 80MB
+      
+server:
+  servlet:
+    context-path: /prodiver
+  port: 7001
+  
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://eureka1:8001/eureka/,http://eureka2:8002/eureka/

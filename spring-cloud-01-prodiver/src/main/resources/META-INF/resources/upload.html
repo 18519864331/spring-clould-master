@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    	<!-- /zuul 绕过zuul的上传限制文件大小 -->
+        <form action="http://localhost:5000/zuul/prodiver-servive/prodiver/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="file"><br>
+            <input type="submit" value="普通上传">
+        </form>
+    </div>
+    <div>
+        <form action="http://localhost:7001/prodiver/upload" enctype="multipart/form-data" method="POST">
+            <input type="file" name="file"> <br>
+            <input type="submit" value="绕过zuul上传">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+server:
+  servlet:
+    context-path: /consumer
+  port: 9001
+ 
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://eureka1:8001/eureka/,http://eureka2:8002/eureka/
+
+spring:
+  application:
+    name: consumer-servive
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true  ##启用重试机制
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds : 2000  #2秒
+
+custom: 
+  rest: 
+    connect-timeout: 1000
+    connection-request-timeout: 1000
+    readTimeout: 3000
+             
+client-service: 
+  ribbon:
+    ## 以下两个配置只适用于ribbon组件，在这里配置没有用，
+       #  需要在启动类中配合HttpComponentsClientHttpRequestFactory使用,配合下面的custom:rest
+    # ConnectTimeout: 250 # 与服务提供方建立Http连接的超时时间
+    # ReadTimeout: 1000 # 接收返回数据的超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
+    MaxAutoRetries: 5 # 对当前实例的重试次数(不包含包含第一次请求)
+  
